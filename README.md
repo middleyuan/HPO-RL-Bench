@@ -13,7 +13,13 @@ Get the data from [HERE](https://drive.google.com/file/d/1AW5_6xGGiklteZgyyDBxSs
 
 `conda install swig`
 
-`conda install -r requirements.txt`
+`pip install -r requirements.txt`
+
+`conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
+
+`conda install --force-reinstall scipy`
+
+`conda install -c conda-forge gpy`
 
 
 **Note:** For *pyrfr*,  Microsoft Visual C++ 14.0 or greater is required. Get it with [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/). 
