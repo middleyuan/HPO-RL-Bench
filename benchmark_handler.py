@@ -17,7 +17,7 @@ class BenchmarkHandler:
         A handler for interacting with and running HPO-RL-Bench.
 
         Parameters:
-        - data_path (str): Path to the parent folder of the `data_hpo_rl_bench`. If not in the same folder
+        - data_path (str): Path to the parent folder of the `data_arl_bench`. If not in the same folder
           as the `benchmark_handler.py` script, this path needs to be provided.
         - environment (str): Name of the environment to benchmark the RL algorithm on. This should be one
           of ["Pong-v0", "Ant-v2", "Alien-v0", "BankHeist-v0", "BeamRider-v0", "Breakout-v0", "Enduro-v0",
@@ -269,11 +269,11 @@ class BenchmarkHandler:
                 if search_space == "DQN":
                     epsilon = config.get("epsilon")
                     if set == "static":
-                        if os.path.exists(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        if os.path.exists(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                        '%s_%s_random_lr_%s_gamma_%s_epsilon_%s_seed%s_eval.json' % (
                                                        environment, search_space,
                                                        lr, gamma, epsilon, seed))):
-                            with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                            with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                    '%s_%s_random_lr_%s_gamma_%s_epsilon_%s_seed%s_eval.json' % (
                                                    environment, search_space,
                                                    lr, gamma, epsilon, seed))) as f:
@@ -290,11 +290,11 @@ class BenchmarkHandler:
                     else:
                         n_layers = config.get("n_layers")
                         n_units = config.get("n_units")
-                        if os.path.exists(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        if os.path.exists(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                        '%s_%s_lr_%s_gamma_%s_epsilon_%s_layers_%s_units_%s_seed%s.json' %
                                                        (environment, search_space, lr, gamma, epsilon, n_layers, n_units,
                                                         seed))):
-                            with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                            with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                    '%s_%s_lr_%s_gamma_%s_epsilon_%s_layers_%s_units_%s_seed%s.json' %
                                                    (environment, search_space, lr, gamma, epsilon, n_layers, n_units,
                                                     seed))) as f:
@@ -320,14 +320,14 @@ class BenchmarkHandler:
                                     return data["returns_eval"][-1]
 
                         else:
-                            print(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                            print(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                        '%s_%s_lr_%s_gamma_%s_epsilon_%s_layers_%s_units_%s_seed%s.json' %
                                                (environment, search_space, lr, gamma, epsilon, n_layers, n_units,
                                                         seed)))
                 elif search_space == "PPO":
                     clip = config.get("clip")
                     if set == "static":
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_random_lr_%s_gamma_%s_clip_%s_seed%s_eval.json' % (
                                                environment, search_space,
                                                lr, gamma, clip, seed))) as f:
@@ -339,7 +339,7 @@ class BenchmarkHandler:
                     else:
                         n_layers = config.get("n_layers")
                         n_units = config.get("n_units")
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_lr_%s_gamma_%s_clip_%s_layers_%s_units_%s_seed%s.json' %
                                                (environment, search_space, lr, gamma, clip, n_layers, n_units, seed))) as f:
                             data = json.load(f)
@@ -364,14 +364,14 @@ class BenchmarkHandler:
                                     return data["returns_eval"][-1]
                 elif search_space == "A2C":
                     if set == "static":
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_random_lr_%s_gamma_%s_seed%s_eval.json' % (environment, search_space,
                                                                                                  lr, gamma, seed))) as f:
                             data = json.load(f)
                     else:
                         n_layers = config.get("n_layers")
                         n_units = config.get("n_units")
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_lr_%s_gamma_%s_layers_%s_units_%s_seed%s.json' %
                                                (environment, search_space, lr, gamma, n_layers, n_units, seed))) as f:
                             data = json.load(f)
@@ -390,7 +390,7 @@ class BenchmarkHandler:
                 elif search_space in ["DDPG", "TD3", "SAC"]:
                     tau = config.get("tau")
                     if set == "static":
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_random_lr_%s_gamma_%s_tau_%s_seed%s_eval.json' % (
                                                environment, search_space,
                                                lr, gamma, tau, seed))) as f:
@@ -398,7 +398,7 @@ class BenchmarkHandler:
                     else:
                         n_layers = config.get("n_layers")
                         n_units = config.get("n_units")
-                        with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                        with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                                '%s_%s_lr_%s_gamma_%s_tau_%s_layers_%s_units_%s_seed%s.json' %
                                                (environment, search_space, lr, gamma, tau, n_layers, n_units, seed))) as f:
                             data = json.load(f)
@@ -427,7 +427,7 @@ class BenchmarkHandler:
                 elif len(gammas) == 2:
                     gammas.append(gammas[1])
                 if search_space in ["PPO", "TD3", "SAC"]:
-                    with open(os.path.join(self.data_path, 'data_hpo_rl_bench', search_space, environment,
+                    with open(os.path.join(self.data_path, 'data_arl_bench', search_space, environment,
                                            '%s_%s_random_lr_%s%s%s_gamma_%s%s%s_seed%s_eval.json' % (environment, search_space,
                                                                                                      lrs[0], lrs[1], lrs[2],
                                                                                                      gammas[0], gammas[1],
